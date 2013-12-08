@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;IgnoringEntityResolver.java&apos; to &apos;AndroidTestProject/src/com.example.androidtestproject&apos;&#x0A;- Original project: &apos;org.jvoicexml.xml&apos;&#x0A;- Destination element: &apos;AndroidTestProject/src/com.example.androidtestproject&apos;&#x0A;- Original element: &apos;org.jvoicexml.xml.IgnoringEntityResolver.java&apos;" description="Copy compilation unit" destination="=AndroidTestProject/src&lt;com.example.androidtestproject" element1="/src&lt;org.jvoicexml.xml{IgnoringEntityResolver.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1364675318381" units="1" version="1.0"/>
+</session>

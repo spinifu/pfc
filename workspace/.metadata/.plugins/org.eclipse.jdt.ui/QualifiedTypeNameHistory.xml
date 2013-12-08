@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.jvoicexml.android.exceptionTestProject.library.SemanticError"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.exceptionTestProject.library.SsmlDocument"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.exceptionTestProject.library.Speak"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.exceptionTestProject.library.VoiceXmlNode"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.exceptionTestProject.library.Audio"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.exceptionTestProject.library.Prompt"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.CCExceptionTestProject.library.SemanticError"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.CCExceptionTestProject.library.ErrorEvent"/>
+<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+<fullyQualifiedTypeName name="com.example.org.jvoicexml.android.ccexceptiontestproject.SsmlParser"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.CCExceptionTestProject.library.SsmlParsingStrategyFactory"/>
+<fullyQualifiedTypeName name="org.jvoicexml.xml.vxml.Enumerate"/>
+<fullyQualifiedTypeName name="org.jvoicexml.xml.vxml.BargeInType"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.CCExceptionTestProject.library.Prompt"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.xerces.internal.dom.ElementImpl"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.callmanager.AndroidSynthesizedOutputFactory"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.callmanager.AndroidSynthesizedOutput"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.xpath.internal.operations.And"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="org.jvoicexml.android.callmanager.AndroidConfiguration"/>
+<fullyQualifiedTypeName name="android.speech.tts.TextToSpeech.OnInitListener"/>
+<fullyQualifiedTypeName name="org.jvoicexml.CallControlProperties"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilder"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="java.io.Reader"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.nio.CharBuffer"/>
+<fullyQualifiedTypeName name="android.R"/>
+</qualifiedTypeNameHistroy>

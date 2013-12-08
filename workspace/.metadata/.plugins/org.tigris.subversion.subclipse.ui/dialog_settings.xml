@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="500" key="CommitDialog.weights.0"/>
+	<item value="" key="DirectorySelectionPage.lastParent_https://schnelle@svn.code.sf.net/p/jvoicexml/code"/>
+	<item value="477" key="ChooseUrlDialog.size.x"/>
+	<item value="500" key="CommitDialog.weights.1"/>
+	<item value="349" key="ChooseUrlDialog.size.y"/>
+	<item value="564" key="passwordStores.size.y"/>
+	<item value="556" key="passwordStores.size.x"/>
+	<item value="239" key="HistoryTableProvider.SVNHistoryPage.Author"/>
+	<item value="branches/android" key="DirectorySelectionPage.lastParent_https://svn.code.sf.net/p/jvoicexml/code"/>
+	<item value="22" key="CommitDialog.location.y"/>
+	<item value="0" key="CommitDialog.location.x"/>
+	<item value="22" key="passwordStores.location.y"/>
+	<item value="362" key="passwordStores.location.x"/>
+	<item value="https://svn.code.sf.net/p/jvoicexml/code" key="RepositorySelectionPage.lastRepository"/>
+	<item value="402" key="ChooseUrlDialog.location.x"/>
+	<item value="299" key="HistoryTableProvider.SVNHistoryPage.Date"/>
+	<item value="108" key="ChooseUrlDialog.location.y"/>
+	<item value="1280" key="CommitDialog.size.x"/>
+	<item value="598" key="HistoryTableProvider.SVNHistoryPage.Comment"/>
+	<item value="774" key="CommitDialog.size.y"/>
+	<item value="120" key="HistoryTableProvider.SVNHistoryPage.Revision"/>
+	<section name="CommitWizard">
+		<item value="false" key="ShowCompare"/>
+		<item value="500" key="VWeight2"/>
+		<item value="500" key="VWeight1"/>
+	</section>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="https://github.com/Frogtek/tiendatek.git"/>
+			<item value="https://svn.code.sf.net/p/jvoicexml/code/"/>
+		</list>
+	</section>
+</section>

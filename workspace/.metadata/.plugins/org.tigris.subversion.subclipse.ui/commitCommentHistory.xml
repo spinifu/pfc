@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommitComments>	<CommitComment>Initial import.</CommitComment>
+	<CommitComment>updating org.jvoicxml for android branch</CommitComment>
+	<CommitComment>updating callManager
+</CommitComment>
+	<CommitComment> modifications on the AndroidSynthesizedOutputFactory, AndroidSynthesizedOutput, and AndroidImplementationPlatformFactory</CommitComment>
+	<CommitComment>updating demoApplication</CommitComment>
+	<CommitComment>updating demoApplication </CommitComment>
+	<CommitComment>trying several grammar example documents to see if the exception still holds</CommitComment>
+	<CommitComment>ClassCastException isolated in an small project. Still in need of creating an adequate node to call the SSMLParser constructor with.</CommitComment>
+	<CommitComment>reorg</CommitComment>
+	<CommitComment>CCException isolated to the minimum expression. Still in need of creating a node to call the SSMLParser constructor with.</CommitComment>
+</CommitComments>

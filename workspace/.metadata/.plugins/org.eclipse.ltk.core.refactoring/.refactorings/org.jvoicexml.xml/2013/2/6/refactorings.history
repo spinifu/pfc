@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Prompt.java&apos; to &apos;org.jvoicexml.android.CCExceptionTestProject/src/org.jvoicexml.android.CCExceptionTestProject.library&apos;&#x0A;- Original project: &apos;org.jvoicexml.xml&apos;&#x0A;- Destination element: &apos;org.jvoicexml.android.CCExceptionTestProject/src/org.jvoicexml.android.CCExceptionTestProject.library&apos;&#x0A;- Original element: &apos;org.jvoicexml.xml.vxml.Prompt.java&apos;" description="Copy compilation unit" destination="=org.jvoicexml.android.CCExceptionTestProject/src&lt;org.jvoicexml.android.CCExceptionTestProject.library" element1="/src&lt;org.jvoicexml.xml.vxml{Prompt.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1360436933696" units="1" version="1.0"/>
+</session>

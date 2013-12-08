@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<!--
+Tellme Studio Code Example 102
+Copyright (C) 2000-2001 Tellme Networks, Inc. All Rights Reserved.
+
+THIS CODE IS MADE AVAILABLE SOLELY ON AN "AS IS" BASIS, WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION,
+WARRANTIES THAT THE CODE IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A
+PARTICULAR PURPOSE OR NON-INFRINGING.
+-->
+
+<vxml version="2.0">
+
+<!-- document-level link fires a help event -->
+<link event="help">
+  <grammar mode="dtmf"
+           root="root_rule"
+           tag-format="semantics/1.0"
+           type="application/srgs+xml"
+           version="1.0">
+    <rule id="root_rule" scope="public">
+      <item>
+        0
+      </item>
+    </rule>
+  </grammar>
+
+  <grammar mode="voice"
+           root="root_rule"
+           tag-format="semantics/1.0"
+           type="application/srgs+xml"
+           version="1.0"
+           xml:lang="en-US">
+    <rule id="root_rule" scope="public">
+      <item weight="0.001">
+        help
+      </item>
+    </rule>
+  </grammar>
+</link>
+
+
+
+<!-- document-level link quits -->
+<link event="event.exit">
+  <grammar mode="voice"
+           root="root_rule"
+           tag-format="semantics/1.0"
+           type="application/srgs+xml"
+           version="1.0"
+           xml:lang="en-US">
+    <rule id="root_rule" scope="public">
+      <one-of>
+        <item>
+          quit
+        </item>
+      </one-of>
+    </rule>
+  </grammar>
+</link>
+
+
+<catch event="event.exit">
+   <exit />
+</catch>
+
+<!-- this form asks the user to choose a department -->
+<form id="choose_dept">
+
+   <!-- dept is the field item variable that 
+        holds the return value from the grammar -->
+   <field name="dept">      
+      
+      <grammar mode="dtmf"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0">
+            <rule id="root_rule" scope="public">
+                  <one-of>
+                        <item>
+                              <item>
+                                    1
+                              </item>
+                              <tag>out.dept = "dog";</tag>
+                        </item>
+                        <item>
+                              <item>
+                                    2
+                              </item>
+                              <tag>out.dept = "plant";</tag>
+                        </item>
+                  </one-of>
+            </rule>
+
+      </grammar>
+
+      <grammar mode="voice"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0"
+         xml:lang="en-US">
+            <rule id="root_rule" scope="public">
+                  <one-of>
+                        <item>
+                              <one-of>
+                                    <item>
+                                          dogs
+                                    </item>
+                                    <item>
+                                          <one-of>
+                                                <item>
+                                                      dog
+                                                </item>
+                                                <item>
+                                                      canine
+                                                </item>
+                                                <item>
+                                                      pet
+                                                </item>
+                                                <item>
+                                                      mutt
+                                                </item>
+                                          </one-of>
+                                          <item repeat="0-1">
+                                                department
+                                          </item>
+                                    </item>
+                              </one-of>
+                              <tag>out.dept = "dog";</tag>
+                        </item>
+                        <item>
+                              <one-of>
+                                    <item>
+                                          plants
+                                    </item>
+                                    <item>
+                                          flowers
+                                    </item>
+                                    <item>
+                                          nursery
+                                    </item>
+                                    <item>
+                                          <one-of>
+                                                <item>
+                                                      plant
+                                                </item>
+                                                <item>
+                                                      flower
+                                                </item>
+                                          </one-of>
+                                          <item repeat="0-1">
+                                                department
+                                          </item>
+                                    </item>
+                              </one-of>
+                              <tag>out.dept = "plant";</tag>
+                        </item>
+                  </one-of>
+            </rule>
+
+      </grammar>
+
+      
+      <prompt>
+         <audio>Would you like to buy a dog or a plant?</audio>
+      </prompt>
+
+      <!-- User's utterance didn't match the grammar  -->      
+      <nomatch>
+         <audio>Sorry, I didn't understand</audio>
+         <reprompt/>
+      </nomatch>
+
+      <!-- User was silent -->
+      <noinput>
+         <audio>Sorry, I didn't hear you</audio>
+         <reprompt/>
+      </noinput>
+      
+      <!-- User said help -->
+      <help>
+         <audio>
+            You are in Buy Me. Please choose a department. You can
+            say dogs or plants. You can also say quit at any time.
+         </audio> 
+      </help>
+      
+      <!-- User's utterance matched the grammar -->
+      <filled>
+         <audio>I heard you say <value expr="dept"/></audio>
+
+         <if cond=" dept == 'dog' ">
+            <goto next="#dog_dept"/>
+         <elseif cond=" dept == 'plant' "/>
+            <goto next="#plant_dept"/>
+         </if>
+      </filled>
+   </field>
+</form>
+
+<!-- 
+   The following two dialogs (dog_dept and plant_dept) don't accept user input.
+   You can make them more useful by allowing the user to choose from a list of items 
+   appropriate for the dialog (aka department).
+-->
+
+<form id="dog_dept">
+   <block>
+        <audio>Welcome to the dog department!</audio>
+        <!-- TODO: add code to choose a type of dog -->
+        <goto next="#choose_dept"/>
+   </block>
+</form>
+
+<form id="plant_dept">
+   <block>
+        <audio>Welcome to the plant department</audio>
+        <!-- TODO: add code to choose a type of plant -->
+        <goto next="#choose_dept"/>
+   </block>
+</form>
+
+</vxml>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+
+
+
+<meta name="description" content="simple grammar and simple 
+ event handling example"/>
+
+<meta name="author" content="OptimSys, s.r.o.,
+ Czech Republic (http://www.optimsys.cz)"/>
+
+<meta name="copyright" content="free for any purpose"/>
+
+
+
+<form id="start">
+
+  <field name="answer">
+
+    <noinput> Hey, don't sleep! </noinput>
+
+    <nomatch> say 'yes' or 'no' </nomatch>
+
+
+
+    <prompt> Are you sleepy? </prompt>
+
+
+
+    <grammar mode="voice"
+         root="main"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0"
+         xml:lang="en-US">
+	 <rule id="main" scope="public">
+        <one-of>
+          <item><ruleref uri="#yes"/><tag>yes</tag></item>
+          <item><ruleref uri="#no"/><tag>no</tag></item>
+        </one-of>
+      </rule>
+      <rule id="yes">
+        <one-of>
+          <item>yes</item>
+          <item>yeah</item>
+          <item>yep</item>
+          <item>sure</item>
+        </one-of>
+      </rule>
+      <rule id="no">
+        <one-of>
+          <item>no</item>
+          <item>not</item>
+          <item>nope</item>
+        </one-of>
+      </rule>
+    </grammar>
+    <filled>
+      <if cond="answer=='yes'">
+        So you are sleepy. Me too.
+      <else/>
+        So you are not sleepy. But I am.
+      </if>
+    </filled>
+  </field>
+</form>
+
+
+
+</vxml>

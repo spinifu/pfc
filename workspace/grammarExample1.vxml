@@ -1,0 +1,388 @@
+<!--
+Tellme Studio Address Capture Example
+Copyright (C) 2002-2003 Tellme Networks, Inc. All Rights Reserved.
+
+THIS CODE IS MADE AVAILABLE SOLELY ON AN "AS IS" BASIS, WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION,
+WARRANTIES THAT THE CODE IS FREE OF DEFECTS, MERCHANTABLE, 
+FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING.
+-->
+<vxml version="2.0" 
+  xmlns="http://www.w3.org/2001/vxml">
+
+   <var name="laststate" expr="'intro'"/>
+
+   <link event="help">
+      
+      <grammar mode="voice"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0"
+         xml:lang="en-US">
+            <rule id="root_rule" scope="public">
+                  <one-of>
+                        <item>
+                              help
+                        </item>
+                  </one-of>
+            </rule>
+
+      </grammar>
+
+   </link>
+
+
+   <!-- Recognize the utterances "exit" throughout the document -->
+   <link event="mycompany.myapp.exit">
+      
+      <grammar mode="voice"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0"
+         xml:lang="en-US">
+            <rule id="root_rule" scope="public">
+                  <one-of>
+                        <item>
+                              exit
+                        </item>
+                        <item>
+                              quit
+                        </item>
+                  </one-of>
+            </rule>
+
+      </grammar>
+
+   </link>
+
+   <!-- handle the custom exit event -->
+   <catch event="mycompany.myapp.exit">
+      <goto next="#confirm_exit"/>
+   </catch>
+
+   <catch event="">
+     <log>Unhandled event <value expr="_event"/></log>
+     Sorry. An unexpected error occurred.
+     <exit/>
+   </catch>
+
+   <script>
+   var days = ["sunday", "monday", "tuesday", "wednesday", 
+     "thursday", "friday", "saturday"];
+   var months = ["january", "february", "march", "april", "may", 
+     "june", "july", "august", "september", "october", "november", "december"];
+   </script>
+
+<form id="intro">
+   <block>
+      <audio>This example demonstrates grammar scoping. You can say quit at any time.</audio>
+      <goto next="#get_day"/>
+   </block>
+</form>
+   
+<form id="get_day">
+   <block>
+      <assign name="laststate" expr="'get_day'"/>
+   </block>
+
+   <field name="day">      
+      
+      <grammar mode="voice"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0"
+         xml:lang="en-US">
+            <rule id="root_rule" scope="public">
+                  <one-of>
+                        <item>
+                              sunday
+                              <tag>out.day = "0";</tag>
+                        </item>
+                        <item>
+                              monday
+                              <tag>out.day = "1";</tag>
+                        </item>
+                        <item>
+                              tuesday
+                              <tag>out.day = "2";</tag>
+                        </item>
+                        <item>
+                              wednesday
+                              <tag>out.day = "3";</tag>
+                        </item>
+                        <item>
+                              thursday
+                              <tag>out.day = "4";</tag>
+                        </item>
+                        <item>
+                              friday
+                              <tag>out.day = "5";</tag>
+                        </item>
+                        <item>
+                              saturday
+                              <tag>out.day = "6";</tag>
+                        </item>
+                  </one-of>
+            </rule>
+
+      </grammar>
+
+      
+      <grammar mode="dtmf"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0">
+            <rule id="root_rule" scope="public">
+                  <one-of>
+                        <item>
+                              1
+                              <tag>out.day = "0";</tag>
+                        </item>
+                        <item>
+                              2
+                              <tag>out.day = "1";</tag>
+                        </item>
+                        <item>
+                              3
+                              <tag>out.day = "2";</tag>
+                        </item>
+                        <item>
+                              4
+                              <tag>out.day = "3";</tag>
+                        </item>
+                        <item>
+                              5
+                              <tag>out.day = "4";</tag>
+                        </item>
+                        <item>
+                              6
+                              <tag>out.day = "5";</tag>
+                        </item>
+                        <item>
+                              7
+                              <tag>out.day = "6";</tag>
+                        </item>
+                  </one-of>
+            </rule>
+
+      </grammar>
+
+
+      <prompt>
+         <audio>what day is it?</audio>
+      </prompt>
+      
+      <nomatch>
+         <audio>Sorry. I didn't get that. 
+         Say a day of the week. For example, say monday.</audio>
+      </nomatch>
+      
+      <noinput>
+         <audio>Sorry. I couldn't hear you.</audio>
+         <reprompt/>
+      </noinput>
+
+      <help>
+      Say a day of the week. For example, say monday.
+      You can also type the day using your touch tone key pad. For example, for sunday, type 1.
+      For saturday type 7.
+      </help>
+      
+      <filled>
+        Okay, <value expr="days[parseInt(day, 10)]"/>
+        <goto next="#get_month"/>
+      </filled>
+   </field>
+</form>
+
+<form id="get_month">
+   <block>
+      <assign name="laststate" expr="'get_month'"/>
+   </block>
+
+   <field name="month">
+      
+      
+      <grammar mode="voice"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0"
+         xml:lang="en-US">
+            <rule id="root_rule" scope="public">
+                  <one-of>
+                        <item>
+                              january
+                              <tag>out.month = "0";</tag>
+                        </item>
+                        <item>
+                              february
+                              <tag>out.month = "1";</tag>
+                        </item>
+                        <item>
+                              march
+                              <tag>out.month = "2";</tag>
+                        </item>
+                        <item>
+                              april
+                              <tag>out.month = "3";</tag>
+                        </item>
+                        <item>
+                              may
+                              <tag>out.month = "4";</tag>
+                        </item>
+                        <item>
+                              june
+                              <tag>out.month = "5";</tag>
+                        </item>
+                        <item>
+                              july
+                              <tag>out.month = "6";</tag>
+                        </item>
+                        <item>
+                              august
+                              <tag>out.month = "7";</tag>
+                        </item>
+                        <item>
+                              september
+                              <tag>out.month = "8";</tag>
+                        </item>
+                        <item>
+                              october
+                              <tag>out.month = "9";</tag>
+                        </item>
+                        <item>
+                              november
+                              <tag>out.month = "10";</tag>
+                        </item>
+                        <item>
+                              december
+                              <tag>out.month = "11";</tag>
+                        </item>
+                  </one-of>
+            </rule>
+
+      </grammar>
+
+      
+      <grammar mode="dtmf"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0">
+            <rule id="root_rule" scope="public">
+                  <one-of>
+                        <item>
+                              1
+                              <tag>out.month = "0";</tag>
+                        </item>
+                        <item>
+                              2
+                              <tag>out.month = "1";</tag>
+                        </item>
+                        <item>
+                              3
+                              <tag>out.month = "2";</tag>
+                        </item>
+                        <item>
+                              4
+                              <tag>out.month = "3";</tag>
+                        </item>
+                        <item>
+                              5
+                              <tag>out.month = "4";</tag>
+                        </item>
+                        <item>
+                              6
+                              <tag>out.month = "5";</tag>
+                        </item>
+                        <item>
+                              7
+                              <tag>out.month = "6";</tag>
+                        </item>
+                        <item>
+                              8
+                              <tag>out.month = "7";</tag>
+                        </item>
+                        <item>
+                              9
+                              <tag>out.month = "8";</tag>
+                        </item>
+                        <item>
+                              1
+                              0
+                              <tag>out.month = "9";</tag>
+                        </item>
+                        <item>
+                              1
+                              1
+                              <tag>out.month = "10";</tag>
+                        </item>
+                        <item>
+                              1
+                              2
+                              <tag>out.month = "11";</tag>
+                        </item>
+                  </one-of>
+            </rule>
+
+      </grammar>
+
+      
+      <prompt>
+        <audio>what month is it?</audio>
+      </prompt>
+      
+      <nomatch>
+        <audio>Sorry. I didn't get that.  
+        Say a month name. For example, say october.</audio>
+      </nomatch>
+      
+      <noinput>
+        <audio>Sorry. I couldn't hear you</audio>
+        <reprompt/>
+      </noinput>
+
+      <help>
+      Say a month of the year. For example, say january.
+      You can also type the month using your touch tone key pad. For example, for january , type one.
+      For december type one two.
+      </help>
+      
+      <filled>
+        Okay, <value expr="months[parseInt(month, 10)]"/>
+        <goto next="#get_day"/>
+      </filled>
+   </field>
+</form>
+
+<!-- confirm that the user really wants to quit -->
+<form id="confirm_exit">
+<field type="boolean" name="yesno">
+  <prompt>I think I heard you say quit or exit. Did I get that right?</prompt>
+
+  <noinput>
+     <audio>Sorry. I didn't hear you. Do you wanna quit this application? Say yes or no.</audio>
+  </noinput>
+
+  <nomatch>
+     <audio>Sorry. I didn't get that. Do you wanna quit? Say yes or no.</audio>
+  </nomatch>
+
+  <filled>
+  <if cond="yesno">
+     <exit />
+  <else/>
+     <goto expr="'#' + laststate"/>
+  </if>
+  </filled>
+
+</field>
+</form>
+   
+</vxml>
+
